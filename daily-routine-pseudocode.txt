@@ -1,0 +1,71 @@
+BEGIN
+
+    FUNCTION StartDay():
+    
+        // Step 1: Waking up
+        AlarmClockRings()
+        IF UserIsAwake() THEN
+            OUTPUT "Good morning! Time to start the day."
+        ELSE
+            OUTPUT "Still asleep. Snoozing for 5 minutes."
+            WAIT(5 minutes)
+            AlarmClockRings()
+            IF UserIsAwake() THEN
+                OUTPUT "Good morning! Time to start the day."
+            ELSE
+                OUTPUT "Failed to wake up. Try more snooze or get up manually."
+
+        // Step 2: Making the bed
+        IF BedIsMessy() THEN
+            OUTPUT "Making the bed."
+            MakeBed()
+        ELSE
+            OUTPUT "Bed is already made."
+
+        // Step 3: Brushing teeth
+        IF ToothbrushAndToothpasteAvailable() THEN
+            OUTPUT "Brushing teeth."
+            TurnOnWater()
+            WetToothbrush()
+            ApplyToothpaste()
+            BrushTeeth()
+            RinseMouth()
+            TurnOffWater()
+            OUTPUT "Teeth brushed."
+        ELSE
+            OUTPUT "Missing toothbrush or toothpaste."
+
+        // Step 4: Eating breakfast
+        IF BreakfastIsReady() THEN
+            OUTPUT "Eating breakfast."
+            EatBreakfast()
+        ELSE
+            OUTPUT "Preparing breakfast."
+            PrepareBreakfast()
+            EatBreakfast()
+            OUTPUT "Breakfast served."
+
+        // Step 5: Taking a bath
+        IF BathIsAvailable() THEN
+            OUTPUT "Taking a bath."
+            TakeBath()  // Simplified to a single function call
+            OUTPUT "Bath done."
+        ELSE
+            OUTPUT "No bath available. Consider an alternative."
+
+        // Step 6: Going to school
+        IF SchoolBagIsPacked() THEN
+            OUTPUT "Heading to school."
+            LeaveForSchool()
+        ELSE
+            OUTPUT "Packing school bag."
+            PackSchoolBag()
+            OUTPUT "Bag packed. Heading to school."
+            LeaveForSchool()
+
+    END FUNCTION
+
+    // Execute the morning routine
+    StartDay()
+
+END
